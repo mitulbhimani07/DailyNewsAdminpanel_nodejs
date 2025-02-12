@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hindustan Times</title>
+    <link rel="icon" href="/img/hd.jpg" type="image/gif" sizes="16x16">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/source-sans-3@5.0.12/index.css"
+        integrity="sha256-tXJfXfp6Ewt1ilPzLDtQnJV4hclT9XuaZUKyUvmyr+Q=" crossorigin="anonymous" />
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        integrity="sha512-o8CxlQqfHtRshJXUodlvJCGG1MeIvHXZQ/ynzEm5mIHcGFXvEnMjCLBnhO2LsQJUGC1r6VJDB2xtzIxt2ojd6A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- Third Party Plugins -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/overlayscrollbars@2.10.1/styles/overlayscrollbars.min.css"
+        integrity="sha256-tZHrRjVqNSRyWg2wbppGnT833E/Ys0DHWGwT04GiqQg=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+        integrity="sha256-9kPW/n5nn53j4WMRYAxe9c1rCY96Oogo/MKSVdKzPmI=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/apexcharts@3.37.1/dist/apexcharts.css"
+        integrity="sha256-4MX+61mt9NVvvuPjUWdUdyfZfxSB1/Rf9WtqRHgG5S0=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/jsvectormap@1.5.3/dist/css/jsvectormap.min.css"
+        integrity="sha256-+uGLJmmTKOqBr+2E6KDYs/NRsHxSkONXFHUL0fy2O/4=" crossorigin="anonymous" />
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+
+        .header {
+            background-color: #343a40;
+            padding: 15px 0;
+        }
+
+        .navbar .nav-link {
+            color: white !important;
+            font-size: 1rem;
+            font-weight: 500;
+            margin-right: 15px;
+        }
+
+        .navbar .nav-link:hover {
+            color: #ffc107 !important;
+        }
+
+        .navbar-brand img {
+            height: 40px;
+        }
+
+        .search-bar {
+            max-width: 300px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: auto;
+            padding: 20px;
+        }
+
+        .comment-card {
+            display: flex;
+            align-items: center;
+            background: white;
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 15px;
+        }
+
+        .img, .com-img {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            margin-right: 15px;
+        }
+
+        .comment-item {
+            display: flex;
+            align-items: center;
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .comment-item p {
+            margin-bottom: 5px;
+        }
+
+        .comment-time {
+            font-size: 0.85rem;
+            color: #6c757d;
+        }
+
+        footer {
+            text-align: center;
+            padding: 10px;
+            background: #343a40;
+            color: white;
+            margin-top: 20px;
+        }
+        /* Header Navbar Styling */
+header {
+    background-color: #222; /* Dark background */
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); /* Soft shadow effect */
+    padding: 10px 0;
+}
+
+.navbar {
+    background-color: transparent; /* Maintain transparency for a clean look */
+    border-bottom: 2px solid #ffcc00; /* Yellow accent line */
+}
+
+.navbar-brand img {
+    max-height: 50px;
+    transition: transform 0.3s ease-in-out;
+}
+
+.navbar-brand img:hover {
+    transform: scale(1.1); /* Slight zoom effect on hover */
+}
+
+.navbar-nav .nav-link {
+    font-size: 17px;
+    font-weight: 600;
+    text-transform: capitalize;
+    color: white !important;
+    padding: 10px 15px;
+    transition: all 0.3s ease-in-out;
+}
+
+.navbar-nav .nav-link:hover,
+.navbar-nav .nav-link:focus {
+    color: #ffcc00 !important; /* Highlight on hover */
+    text-decoration: underline;
+}
+
+.navbar-toggler {
+    border: none;
+    outline: none;
+    padding: 5px;
+}
+
+.navbar-toggler-icon {
+    background-color: white;
+    border-radius: 5px;
+}
+marquee {
+    background-color: #ffcc00;
+    color: #1a1a1a;
+    font-weight: bold;
+    font-size: 18px;
+    padding: 8px 0;
+    border-top: 2px solid #fff;
+    border-bottom: 2px solid #fff;
+    width: 100%;
+}
+/* Responsive Design */
+@media (max-width: 991px) {
+    .navbar-nav {
+        text-align: center;
+    }
+    
+    .navbar-nav .nav-item {
+        padding: 10px 0;
+    }
+    marquee {
+        font-size: 16px;
+        padding: 5px 0;
+    }
+}
+
+    </style>
+</head>
+
+<body>
+    <header class="header ">
+        <nav class="navbar navbar-expand-lg py-3">
+            <div class="container">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                  </button>
+                  <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto">
+                      <a class="navbar-brand " href="#">
+                          <img style="width:415px;  height:71px ;" src="/img/ht_100_logo.webp" alt="Hindustan Times">
+                      </a>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/">Latest News</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/userLogin">Sign In</a>
+                        </li>
+                        
+                       
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <marquee>कुम्भ मेला भारत में आयोजित होने वाला एक विशाल मेला है, जिसमें करोड़ों श्रद्धालु हर बारहवें वर्ष प्रयाग,
+      हरिद्वार, उज्जैन और नासिक में से किसी एक स्थान पर एकत्र होते हैं और नदी में पवित्र स्नान करते हैं। प्रत्येक १२वें
+          वर्ष के अतिरिक्त प्रयाग में दो कुम्भ पर्वों के बीच छह वर्ष के अन्तराल में अर्धकुम्भ भी होता है; २०१३ के कुंभ के बाद
+          २०१९ में प्रयाग में अर्धकुम्भ मेले का आयोजन हुआ था और अब 2025 में पुनः कुंभ मेले का आयोजन हो रहा है।</marquee>
+    
+</body>
+</html>

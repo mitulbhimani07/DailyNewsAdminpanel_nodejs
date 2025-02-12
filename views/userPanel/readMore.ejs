@@ -1,0 +1,89 @@
+  <%- include('../userPanel/userheader') %>
+
+    <div class="container">
+      <h2 class="text-bg-warning p-2">News: <%-UserDetails.titleName.substr(0,130) %></h2>
+      <div class="comment-card">
+        <img class="img" src="<%-UserDetails.Blogimage %>" alt="User">
+        <div>
+          <p><%-UserDetails.titleName %></p>
+          <p><%-UserDetails.aboutName %></p>
+        </div>
+      </div>
+    </div>
+
+    <center>
+      <h1>Comments</h1>
+    </center>
+    <div class="container">
+      <form style="background-color: #343a40; padding: 20px; border-radius: 10px; color: #ddd;" id="Comment"
+        action="/userPanel/insertComments" method="post" enctype="multipart/form-data">
+        <input type="hidden" name="postId" value="<%= postId %>">
+        <div class="mb-3">
+          <label for="name" class="form-label">Enter Name:</label>
+          <input type="text" class="form-control formControl" id="name" name="name" placeholder="Enter Your Name" required>
+        </div>
+        <div class="mb-3">
+          <label for="email" class="form-label">Enter Email:</label>
+          <input type="email" class="form-control formControl" id="email" name="email" placeholder="Enter Your Email" required>
+        </div>
+        <div class="mb-3">
+          <label for="comments" class="form-label">Comments:</label>
+          <textarea class="form-control formControl" id="comments" name="comments" placeholder="Your comments here..." rows="4"
+            required></textarea>
+        </div>
+        <div class="mb-3">
+          <label for="image" class="form-label">Upload Image:</label>
+          <input type="file" class="form-control formControl" id="image" name="image">
+        </div>
+        <button type="submit" class="btn btn-primary w-100">Submit</button>
+      </form>
+    </div>
+
+    <div class="container">
+      <h2 class="mt-4">Comments</h2>
+
+      <div class="card shadow-sm">
+        <div class="card-body">
+            <% if (viewComments && viewComments.length > 0) { %>
+                <div class="row">
+                    <% viewComments.map((v, i) => { %>
+                        <div class="col-md-6 col-lg-4 mb-4">
+                            <div class="card border-0 shadow-sm h-100 w-100">
+                                <div class="card-body  align-items-center">
+                                    <img src="<%= v.image %>" alt="User Image" height="60" width="60"
+                                        class="rounded-circle me-3">
+                                    <div>
+                                        <h5 class="fw-bold mb-1">
+                                            <%= v.name %>
+                                        </h5>
+                                        <p class="mb-1 text-muted"><strong>Email:</strong>
+                                            <%= v.email %>
+                                        </p>
+                                        <p class="text-secondary mb-0"><strong>Comments:</strong>
+                                            <%= v.comments %>
+                                        </p>
+                                        
+                                        <a href="/userLike/<%= v._id %>">Like(<%= v.like.length %>)</a>
+                                          
+                                        <a href="/userdislike/<%= v.id %>">dislike(<%= v.dislike.length %>)</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    <% }) %>
+                </div>
+            <% } else { %>
+                <p class="text-muted text-center">No active comments available.</p>
+            <% } %>
+        </div>
+    </div>
+    </div>
+
+    <footer>
+      &copy; 2025 Hindustan Times. All Rights Reserved.
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
+
+  </html>

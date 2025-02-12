@@ -1,0 +1,145 @@
+<%- include("../header") %>
+
+  <!--end::Sidebar-->
+  <!--begin::App Main-->
+  <main class="app-main">
+    <!--begin::App Content Header-->
+    <div class="app-content-header">
+      <!--begin::Container-->
+      <div class="container-fluid">
+        <!--begin::Row-->
+        <div class="row">
+          <div class="col-sm-6">
+            <h3 class="mb-0">Blogs Data</h3>
+          </div>
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-end">
+              <li class="breadcrumb-item"><a href="#">Home</a></li>
+              <li class="breadcrumb-item active" aria-current="page">Blogs</li>
+            </ol>
+          </div>
+        </div>
+        <!--end::Row-->
+      </div>
+      <!--end::Container-->
+    </div>
+    <!--end::App Content Header-->
+    <!--begin::App Content-->
+    <div class="app-content">
+      <!--begin::Container-->
+      <div class="container-fluid">
+        <!--begin::Row-->
+
+
+        <!-- /.col -->
+        <div style="display: flex;">
+          <form action="">
+            <input type="text" name="blogSearch" value="<%= search %>" />
+            <input type="submit" value="submit" />
+          </form>
+          <a href="/blogs/viewBlog"
+            style="padding:3px 9px; border: 1px solid black; color: black; text-decoration: none;">reset</a>
+        </div>
+        <!-- /.card -->
+        <div class="card">
+          <div class="card-header">
+            <h3 class="card-title">View Admin Data</h3>
+          </div>
+          <!-- /.card-header -->
+
+          <div class="card-body">
+            <table class="table table-striped">
+              <thead>
+                <tr>
+
+                  <th>#</th>
+                  <th>Category Name</th>
+                  <th>TitleName</th>
+                  <th>About</th>
+                  <th>Image</th>
+                  <th>Action</th>
+
+                </tr>
+              </thead>
+
+              <tbody>
+                <% blogShow.map((v,i)=>{ %>
+                  <tr class="align-middle">
+                    <td>
+                      <%= ++i %>
+                    </td>
+                    <td>
+                      <%=  v.categoryId.categoryname %>
+                    </td>
+                    <td>
+                      <%= v.titleName %>
+                    </td>
+                    <td>
+                      <%- v.aboutName.substr(0,50) %>
+                    </td>
+                    <td>
+                      <img src="<%= v.Blogimage %>" width="100px" alt="">
+                    </td>
+                    <!-- <td>
+                      <%= v.blogStatus %>
+                    </td> -->
+                    <td>
+                      <a href="/blogs/updateBlog/<%= v.id %>">Update</a>
+                      <a href="/blogs/deleteblog/<%= v.id %>">Delete</a>
+                    </td>
+
+                  </tr>
+                  <% }) %>
+                    <tr>
+                      <td>
+
+                        <% if(parseInt(page)>0) { %>
+                          <a
+                            href="/blogs/viewBlog?page=<%= parseInt(page)-1 %>&blogsearch=<%= search %>"><button>Previ</button></a>
+
+                          <% } else { %>
+
+                            <button disabled>Previ</button>
+                            <% } %>
+
+                              <a href="/blogs/viewBlog?page=<%= page %>&blogsearch=<%= search %>"><button>
+                                  <%= parseInt(page)+1 %>
+                                </button></a>
+
+                              <% if(parseInt(page)<totalPage-1) { %>
+                                <a
+                                  href="/blogs/viewBlog?page=<%= parseInt(page)+1 %>&blogsearch=<%= search %>"><button>Next</button></a>
+
+                                <% } else { %>
+
+                                  <button disabled>Next</button>
+                                  <% } %>
+
+
+                                   
+                      </td>
+                    </tr>
+              </tbody>
+            </table>
+          </div>
+          <!-- /.card-body -->
+        </div>
+        <!-- /.card -->
+
+        <!-- /.col -->
+
+        <!--end::Row-->
+      </div>
+      <!--end::Container-->
+    </div>
+    <!--end::App Content-->
+  </main>
+  <!--end::App Main-->
+  <!--begin::Footer-->
+
+  <%- include("../footer") %>
+  <script>
+    // script.js
+
+
+  </script>

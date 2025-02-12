@@ -1,0 +1,135 @@
+<%- include("../header") %>
+
+
+  <!--end::Sidebar-->
+  <!--begin::App Main-->
+  <main class="app-main">
+    <!--begin::App Content Header-->
+    <div class="app-content-header">
+      <!--begin::Container-->
+      <div class="container-fluid">
+        <!--begin::Row-->
+        <div class="row">
+          <div class="col-sm-6">
+            <h3 class="mb-0">Admin</h3>
+          </div>
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-end">
+              <li class="breadcrumb-item"><a href="#">Home</a></li>
+              <li class="breadcrumb-item active" aria-current="page">Simple Tables</li>
+            </ol>
+          </div>
+        </div>
+        <!--end::Row-->
+      </div>
+      <!--end::Container-->
+    </div>
+    <!--end::App Content Header-->
+    <!--begin::App Content-->
+    <div class="app-content">
+      <!--begin::Container-->
+      <div class="container-fluid">
+        <!--begin::Row-->
+        <!-- /.col -->
+        <div style="display:flex;">
+          
+          <form action="">
+            <input type="text" name="categorysearch" value="<%= search %>" />
+            <input type="submit" value="submit" />
+          </form>
+          <a href="/category/viewcategory"
+            style="padding:3px 9px; border: 1px solid black; color: black; text-decoration: none;">reset</a>
+        </div>
+        <!-- /.card -->
+        <div class="card">
+          <div class="card-header">
+            <h3 class="card-title">View Admin Data</h3>
+          </div>
+          <!-- /.card-header -->
+
+          <div class="card-body">
+
+           <form action="/category/deleteMultipleCategory" method="post">
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th>
+                    <input type="checkbox" id="checkAll">
+                    <button id="deleteMulty"><i class="bi bi-trash3"></i></button>
+                  </th>
+                  <th>#</th>
+                  <th>Category Name</th>
+                  <th>Category status</th>
+                  <th>Action</th>
+
+                </tr>
+              </thead>
+
+              <tbody>
+                <% if (categoryshow.length > 0) { %>
+                  <% categoryshow.forEach(v => { %>
+                      <tr>
+                          <td>
+                              <input type="checkbox" name="Ids" value="<%= v.id %>">
+                          </td>
+                          <td><%= ++no %></td>
+                          <td><%= v.categoryname %></td>
+                          <td>
+                            <% if(v.categorystatus){ %>
+                              <a href="/category/categoryActive/?categoyIds=<%=v.id %>&status=true"  class="btn btn-success">
+                                Active
+                              </a>
+                            <% } else { %>
+                              <a href="/category/categoryActiveTrue/?categoyIds=<%=v.id %>&status=false" class="btn btn-danger">
+                                Deactive
+                              </a>
+                            <%}%>
+                          </td>
+                          <td>
+                              <a href="/category/deleteCategory/<%= v.id %>" class="btn btn-danger btn-sm">Delete</a>
+                          </td>
+                      </tr>
+                  <% }); %>
+              <% } else { %>
+                  <tr>
+                      <td colspan="2" class="text-center">No categories found.</td>
+                  </tr>
+              <% } %>
+              <tr>
+                  <td>
+                      <a href="/category/viewcategory?page=<%=parseInt(page)-1%>&categorysearch=<%= search %>" class="btn btn-sm <%= page<1 ? 'disabled' : '' %>"> Prev </a>
+                      <a href="/category/viewcategory?page=<%=parseInt(page)%>" class="btn btn-sm"><%=parseInt(page)+1 %></a>
+                      <a href="/category/viewcategory?page=<%=parseInt(page)+1%>&categorysearch=<%= search %>" class="btn btn-sm <%= totalpage<=parseInt(page)+1 ? 'disabled' : '' %>">Next</a>
+                  </td>
+              </tr>
+                            
+
+
+                
+              </tbody>
+            </table>
+           </form>
+          </div>
+          <!-- /.card-body -->
+        </div>
+        <!-- /.card -->
+
+        <!-- /.col -->
+
+        <!--end::Row-->
+      </div>
+      <!--end::Container-->
+    </div>
+    <!--end::App Content-->
+  </main>
+  <!--end::App Main-->
+  <!--begin::Footer-->
+  <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+<script>
+  $("#deleteMulty").hide()
+  $("#checkAll").click(function(){
+    $('input:checkbox').not(this).prop('checked', this.checked);
+    $("#deleteMulty").toggle()
+});
+</script>
+  <%- include("../footer") %>

@@ -1,0 +1,220 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Sevillana&display=swap');
+
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+.sevillana-regular {
+    font-family: "Sevillana", serif;
+    font-weight: 400;
+    font-style: normal;
+  }
+  
+.navbar {
+    background-color: #001f29;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    color: #ffffff;
+    font-family: Arial, sans-serif;
+}
+
+.navbar-brand {
+    font-family: "Old English Text MT", serif;
+    font-size: 2rem;
+    font-weight: bold;
+    text-align: center;
+}
+
+.navbar .nav-link {
+    font-size: 1rem;
+    font-weight: 500;
+    color: #ffffff;
+    margin: 0 0.5rem;
+    text-decoration: none;
+    transition: color 0.3s ease-in-out;
+}
+
+.navbar .nav-link:hover {
+    color: #00b4d8;
+}
+
+.navbar .btn {
+    padding: 0.3rem 0.8rem;
+    font-size: 0.9rem;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+.navbar .btn:hover {
+    background-color: #00b4d8;
+    color: #ffffff;
+}
+
+.navbar-nav {
+    display: flex;
+    align-items: center;
+}
+
+.navbar-nav .nav-item {
+    margin: 0 0.5rem;
+}
+
+.container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 1rem;
+}
+.navbar-nav .nav-item {
+    margin: 0 !important;
+}
+.navbar .form-control {
+    background-color: #002833;
+    border: 1px solid #004455;
+    color: #ffffff;
+    font-size: 0.9rem;
+    border-radius: 5px;
+    padding: 0.4rem 0.8rem;
+    width: 200px;
+    transition: all 0.3s ease-in-out;
+}
+
+.navbar .form-control:focus {
+    background-color: #004455;
+    border-color: #00b4d8;
+    color: #ffffff;
+    box-shadow: 0 0 5px #00b4d8;
+}
+
+.navbar .btn-outline-light {
+    color: #ffffff;
+    border-color: #00b4d8;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.navbar .btn-outline-light:hover {
+    background-color: #00b4d8;
+    color: #ffffff;
+}
+.collapse {
+    flex-grow: 1;
+}
+.logo img{
+    width: 55%;
+    height: 55%;
+}
+aside{
+    width: 13% !important;
+    background-color: #001f29;
+    
+}
+.hdgTexure{
+    position: absolute;
+    top: 24px;
+    left: 0;
+    height: 2px;
+    width: 100%;
+    border-top: solid 1px #dbdbdb;
+}
+.hdgStyle {
+    text-transform: uppercase;
+    position: relative;
+    z-index: 1;
+    background-color: #fff;
+    padding: 0 1px;
+    margin-left: 10px;
+    margin-right: 10px;
+    display: initial;
+    vertical-align: text-top;
+}
+ .secHdg {
+    padding: 10px 0;
+    font-size: 18px;
+    font-weight: 900;
+    line-height: 24px;
+    font-family: "Lato", sans-serif;
+    text-align: left;
+    position: relative;
+    width: 100%;
+    box-sizing: border-box;
+    text-align: center;
+    font-family: "blacker_pro_displayheavy";
+    font-size: 24px;
+    font-weight: normal;
+}
+
+/* Deskripsi artikel */
+.main-content .article p {
+    font-size: 1rem;
+    line-height: 1.2;
+    color: #555;
+    text-align: justify; /* Rata kanan-kiri */
+    overflow: hidden;
+    text-overflow: ellipsis; /* Tampilkan "..." jika terlalu panjang */
+    white-space: normal;
+    display: -webkit-box; /* Untuk multi-line ellipsis */
+    -webkit-line-clamp: 4; /* Maksimal 3 baris */
+    -webkit-box-orient: vertical;
+}
+
+.sidebar {
+    width: 100%;
+    flex: 1;
+    padding: 15px;
+    background-color: #f9f9f9;
+    border-left: 1px solid #ccc; /* Garis pembatas sidebar */
+    max-height: 200vh; /* Batasi tinggi maksimal sidebar sesuai viewport */
+    overflow-y: auto; /* Aktifkan scrolling secara vertikal jika konten melebihi tinggi */
+    scrollbar-width: thin; /* Untuk browser modern, membuat scrollbar lebih tipis */
+    scrollbar-color: #ccc #f9f9f9; /* Warna scrollbar */
+    /* margin-left: 60%; */
+}
+
+/* Styling scrollbar khusus untuk browser berbasis WebKit (Chrome, Safari, Edge) */
+.sidebar::-webkit-scrollbar {
+    width: 8px; /* Lebar scrollbar */
+}
+
+.sidebar::-webkit-scrollbar-thumb {
+    background-color: #ccc; /* Warna scrollbar */
+    border-radius: 4px; /* Sudut melengkung */
+}
+
+.sidebar::-webkit-scrollbar-thumb:hover {
+    background-color: #aaa; /* Warna scrollbar saat dihover */
+}
+
+.sidebar::-webkit-scrollbar-track {
+    background-color: #f9f9f9; /* Latar belakang track scrollbar */
+}
+
+.sidebar .ad {
+    margin-bottom: 10px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    text-align: center;
+    background-color: #fff;
+    font-size: 1rem;
+    font-style: italic; /* Gaya tulisan seperti pengumuman koran */
+    color: #444;
+}
+
+.sidebar .ad h3{
+  display: none; /* Mengilangkan Judul Iklan*/
+}
+
+.sidebar .ad img {
+    max-width: 100%;
+    height: auto;
+    margin-top: 0px;
+    border: 1px solid #ccc;
+}
+.main-news{
+    /* width: 130%; */
+    border: 1px solid transparent;
+    padding: 10px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}

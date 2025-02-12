@@ -1,0 +1,119 @@
+<%- include('header') %>
+    <!--begin::App Main-->
+    <main class="app-main">
+        <!--begin::App Content Header-->
+        <div class="app-content-header">
+            <!--begin::Container-->
+            <div class="container-fluid">
+                <!--begin::Row-->
+                <div class="row">
+                    <div class="col-sm-6">
+                        <h3 class="mb-0">View Admin Details</h3>
+                    </div>
+                    <div class="col-sm-6">
+                        <ol class="breadcrumb float-sm-end">
+                            <li class="breadcrumb-item"><a href="/">Home</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">View Admin Details</li>
+                        </ol>
+                    </div>
+                </div>
+                <!--end::Row-->
+            </div>
+            <!--end::Container-->
+        </div>
+        <!--end::App Content Header-->
+        <!--begin::App Content-->
+        <div class="app-content">
+            <!--begin::Container-->
+            <div class="container-fluid">
+                <!--begin::Row-->
+                <div class="row">
+                    <!-- /.col -->
+                    <div class="col-md-12">
+                        <div class="card mb-4">
+                            <!-- /.card-header -->
+                            <div class="input-group">
+                                <input type="text" name="search" class="form-control" placeholder="Search by Name or Email" value="<%= search || '' %>">
+                                <button type="submit" class="btn btn-primary">Search</button>
+                            </div>
+                            <div class="card-body p-0">
+                                <form action="/deleteMultipleAddmin" method="post">
+                                    <table class="table">
+                                        <thead>
+                                            <tr>
+                                                <th>
+                                                    <input type="checkbox" id="checkAll">
+                                                    <button id="deleteMulty"><i class="bi bi-trash3"></i></button>
+                                                  </th>
+                                                <th style="width: 10px">#</th>
+                                                <th>Name</th>
+                                                <th>Email</th>
+                                                <th>Gender</th>
+                                                <th>Hobby</th>
+                                                <th>City</th>
+                                                <th>Image</th>
+                                                <th>Message</th>
+                                                <th>Actions</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <% AdminRecord.map((v,i)=>{ %>
+                                                <tr>
+                                                    <td>
+                                                        <input type="checkbox" name="Ids" value="<%= v.id %>">
+                                                    </td>
+                                                    <td>
+                                                        <%= i+1 %>
+                                                    </td>
+                                                    <td>
+                                                        <%= v.name %>
+                                                    </td>
+                                                    <td>
+                                                        <%= v.email %>
+                                                    </td>
+                                                    <td>
+                                                        <%= v.gender %>
+                                                    </td>
+                                                    <td>
+                                                        <%= v.hobby %>
+                                                    </td>
+                                                    <td>
+                                                        <%= v.city %>
+                                                    </td>
+                                                    <td><img src="<%= v.image %>" width="100" height="100" alt="<%= v.name%>"></td>
+                                                    <td>
+                                                        <%= v.message %>
+                                                    </td>
+                                                    <td>
+                                                        <a href="/deleteAdmin/<%=v.id%>">DELETE</a>
+                                                        ||
+                                                        <a href="/updateAdmin/<%=v.id%>">UPDATE</a>
+                                                    </td>
+                                                </tr>
+                                                <% }) %>
+                                        </tbody>
+                                    </table>
+                                </form>
+                            </div>
+                            <!-- /.card-body -->
+                        </div>
+                        <!-- /.card -->
+                    </div>
+                    <!-- /.col -->
+                </div>
+                <!--end::Row-->
+            </div>
+            <!--end::Container-->
+        </div>
+        <!--end::App Content-->
+    </main>
+    <!--end::App Main-->
+    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+<script>
+  $("#deleteMulty").hide()
+  $("#checkAll").click(function(){
+    $('input:checkbox').not(this).prop('checked', this.checked);
+    $("#deleteMulty").toggle()
+});
+</script>
+    <%- include('footer') %>

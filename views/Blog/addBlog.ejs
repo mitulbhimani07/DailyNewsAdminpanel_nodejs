@@ -1,0 +1,134 @@
+<%- include("../header") %>
+
+  <main class="app-main">
+    <!--begin::App Content Header-->
+    <div class="app-content-header">
+      <!--begin::Container-->
+      <div class="container-fluid">
+        <!--begin::Row-->
+        <div class="row">
+          <div class="col-sm-6">
+            <h3 class="mb-0">Add Blogs</h3>
+          </div>
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-end">
+              <li class="breadcrumb-item"><a href="#">Home</a></li>
+              <li class="breadcrumb-item active" aria-current="page">Blogs Form</li>
+            </ol>
+          </div>
+        </div>
+        <!--end::Row-->
+      </div>
+      <!--end::Container-->
+    </div>
+    <!--end::App Content Header-->
+    <!--begin::App Content-->
+    <div class="app-content">
+      <!--begin::Container-->
+      <div class="container-fluid">
+        <!--begin::Row-->
+        <div class="row g-4">
+
+          <!--end::Col-->
+          <!--begin::Col-->
+          <div class="col-md-12">
+            <!--begin::Quick Example-->
+            <div class="card card-primary card-outline mb-4">
+              <!--begin::Header-->
+              <div class="card-header">
+                <div class="card-title">Add Blogs Form</div>
+              </div>
+              <!--end::Header-->
+              <!--begin::Form-->
+              <form method="post" action="/blogs/insertBlog" enctype="multipart/form-data">
+                <!--begin::Body-->
+                <div class="card-body">
+                  <div class=" col-md-6 mb-3">
+                    <label for="validationCustom04" class="form-label">Category</label>
+                    <select class="form-select" name="categoryId">
+                      <option value="">Choose...</option>
+                      <% categoryData.map((v,i)=>{ %>
+                        <option value="<%= v._id %>"<% if(oldData && oldData.categoryId == v._id){%> <%= 'selected' %> <% } %>> 
+                          <%= v.categoryname %>
+                        </option>
+                        <% }) %>
+                      </select>
+                      <% if (errorData && errorData.categoryId) { %>
+                        <span class="text-danger"><%= errorData.categoryId.msg %></span>
+                     <% } %>
+                  </div>
+                  <div class="mb-3">
+                    <label for="exampleInputname" class="form-label">Title Name</label>
+                    <input type="text" class="form-control" name="titleName" value="<%   if (oldData && oldData.titleName) { %><%= oldData.titleName %><% } %>"/>
+                    <% if (errorData && errorData.titleName) { %>
+                      <span class="text-danger"><%= errorData.titleName.msg %></span>
+                   <% } %>
+                  </div>
+
+                  <div class="mb-3">
+                    <label for="exampleInputname" class="form-label">Description</label>
+                    <textarea id="editor1" name="aboutName" class="form-control"><% if (oldData && oldData.aboutName) { %> <%= oldData.aboutName %> <% } %></textarea>
+                    <% if (errorData && errorData.aboutName) { %>
+                      <span class="text-danger"><%= errorData.aboutName.msg %></span>
+                   <% } %>
+                  </div>
+                  
+
+                  
+
+                 <div class="input-group mb-3">
+                    <input type="file" class="form-control" name="Blogimage" id="inputGroupFile02" />
+                    <label class="input-group-text fw-bold" for="inputGroupFile02">Upload Image</label>
+                  </div>
+                  <!-- <div class="input-group mb-3">
+                    <input type="file" class="form-control" name="BlogVideo" id="inputGroupFile03" />
+                    <label class="input-group-text fw-bold" for="inputGroupFile03">Upload Video</label>
+                  </div> -->
+                 
+                </div>
+                <!--end::Body-->
+                <!--begin::Footer-->
+                <div class="card-footer">
+                  <button type="submit" class="btn btn-primary" name="submit">Submit</button>
+                </div>
+                <!--end::Footer-->
+              </form>
+              <!--end::Form-->
+            </div>
+            <!--end::Quick Example-->
+            <!--begin::Input Group-->
+
+            <!--end::Input Group-->
+
+          </div>
+
+        </div>
+        <!--end::Row-->
+      </div>
+      <!--end::Container-->
+    </div>
+    <!--end::App Content-->
+  </main>
+
+  <%-include("../footer") %>
+  <script src="https://cdn.tiny.cloud/1/vsev673fnslbumxrc4cqgx1d9l0krr1h4lghxfwaky3ptcqc/tinymce/7/tinymce.min.js" referrerpolicy="origin"></script>
+  <script>
+    tinymce.init({
+      selector: 'textarea',
+      plugins: [
+        // Core editing features
+        'anchor', 'autolink', 'charmap', 'codesample', 'emoticons', 'image', 'link', 'lists', 'media', 'searchreplace', 'table', 'visualblocks', 'wordcount',
+        // Your account includes a free trial of TinyMCE premium features
+        // Try the most popular premium features until Feb 5, 2025:
+        'checklist', 'mediaembed', 'casechange', 'export', 'formatpainter', 'pageembed', 'a11ychecker', 'tinymcespellchecker', 'permanentpen', 'powerpaste', 'advtable', 'advcode', 'editimage', 'advtemplate', 'ai', 'mentions', 'tinycomments', 'tableofcontents', 'footnotes', 'mergetags', 'autocorrect', 'typography', 'inlinecss', 'markdown','importword', 'exportword', 'exportpdf'
+      ],
+      toolbar: 'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table mergetags | addcomment showcomments | spellcheckdialog a11ycheck typography | align lineheight | checklist numlist bullist indent outdent | emoticons charmap | removeformat',
+      tinycomments_mode: 'embedded',
+      tinycomments_author: 'Author name',
+      mergetags_list: [
+        { value: 'First.Name', title: 'First Name' },
+        { value: 'Email', title: 'Email' },
+      ],
+      ai_request: (request, respondWith) => respondWith.string(() => Promise.reject('See docs to implement AI Assistant')),
+    });
+  </script>

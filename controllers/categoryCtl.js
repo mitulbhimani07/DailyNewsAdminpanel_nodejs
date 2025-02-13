@@ -147,58 +147,46 @@ module.exports.categoryActiveTrue = async (req,res) =>{
     }
 }
 
-module.exports.deletecategory = async (req, res) => {
-    try {
-        console.log(req.query);
-        
-        let categoryid = req.query.categoryid;
-        let categoryData = await category.findByIdAndDelete(categoryid);
-        if (categoryData) {
-            console.log("category deleted successfully");
-            return res.redirect("back")
-        }
-        else {
-            console.log("query is not perform");
-            return res.redirect("back")
-        }
+module.exports.deleteCategory = async (req, res) => {
+    try{
+      await category.findByIdAndDelete( req.params.id);
+      req.flash('error',"Category delete successfully");
+      return res.redirect("back");
     }
-    catch {
-        console.log("something is wrong");
-        return res.redirect("back")
+    catch(err){
+      console.log(err);
+      return res.redirect('back');  
     }
-}
+  };
+  
+//   module.exports.editcategory = async (req, res) => {
+//       try {
+//           let categoryid = req.params.categoryid;  // Use req.params instead of req.query
+//           let categoryData = await category.findById(categoryid);
+//           return res.render("category/updeteCategory", {
+//               categoryData
+//           });
+//       } catch {
+//           console.log("Something went wrong");
+//           return res.redirect("back");
+//       }
+//   };
+//   module.exports.updateCategory = async (req, res) => {
+//     console.log(req.body);
+    
+//     try {
+//         let categoryData = await category.findByIdAndUpdate(req.body.id, req.body);
+//         if (categoryData) {
+//             console.log("Category updated successfully");
+//             return res.redirect("/category/viewcategory");
+//         } else {
+//             console.log("Update query failed");
+//             return res.redirect("back");
+//         }
+//     } catch {
+//         console.log("Something went wrong");
+//         return res.redirect("back");
+//     }
+// };
 
-module.exports.updateCategory = async (req, res) => {
-    try {
-        let categoryData = await category.findByIdAndUpdate(req.body.id, req.body);
-        
-        
-        if (categoryData) {
-            console.log("category update successfully");
-            // return res.redirect("back")
-            return res.redirect("/category/viewcategory")
-        }
-        else {
-            console.log("query is not perform");
-            return res.redirect("back")
-        }
-    }
-    catch {
-        console.log("something is wrong");
-        return res.redirect("back")
-    }
-}
 
-module.exports.editcategory = async (req, res) => {
-    try {
-        let categoryid = req.query.categoryid;
-        let categoryData = await category.findById(categoryid);
-        return res.render("category/updeteCategory", {
-            categoryData
-        })
-    }
-    catch {
-        console.log("something is wrong");
-        return res.redirect("back")
-    }
-}

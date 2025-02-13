@@ -21,9 +21,9 @@ routes.get('/categoryActive',categoryctl.categoryActive)
 
 routes.get('/categoryActiveTrue',categoryctl.categoryActiveTrue)
 
-routes.get("/deletecategory", categoryctl.deletecategory);
-routes.post("/updateCategory", categoryctl.updateCategory);
-routes.get("/editcategory", categoryctl.editcategory);
+routes.get('/deleteCategory/:id',categoryctl.deleteCategory);
+// routes.get("/editcategory/:categoryid", categoryctl.editcategory);
+// routes.post("/updateCategory", categoryctl.updateCategory);
 
 
 module.exports = routes;

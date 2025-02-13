@@ -42,7 +42,7 @@ module.exports.insertBlog = async (req, res) => {
 
     if (req.files.Blogimage) {
         console.log("image")
-      Blogimage = Blog.imgPath + "/" + req.files.Blogimage[0].filename;
+      Blogimage = Blog.imagePath + "/" + req.files.Blogimage[0].filename;
     }
     // if (req.files.BlogVideo) {
     //     console.log("video")
